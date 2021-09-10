@@ -2,6 +2,19 @@ import React from 'react';
 import './App.css';
 
 const App = () => {
+  const [char, setChar] = useState([]);
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    axios.get(`https://swapi/dev/api/people`)
+      .then(res => {
+        console.log(res.char)
+        setChar(res.char)
+      })
+      .catch(error => {
+        setError('Try Again')
+      })
+  })
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
